@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+  nginx:
+    image: nginx:1.23.2-alpine
+    ports:
+    - "81:80"
+    
