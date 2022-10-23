@@ -40,13 +40,13 @@ services:
 
   #Front-end
   front-end:
-    build: https://github.com/li-sense/Front-end.git
+    build: https://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@github.com/li-sense/Front-end.git
     
 
   #Back-end
   back-end:
-    build: https://github.com/li-sense/Back-end.git
-
+    build: https://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@github.com/li-sense/Back-end.git
+    
 
 volumes:
   dbdata:
