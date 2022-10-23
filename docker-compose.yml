@@ -40,12 +40,12 @@ services:
 
   #Front-end
   front-end:
-    build: https://github.com/li-sense/Front-end.git
+    build: https://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@github.com/li-sense/Front-end.git#sp/01
     
 
   #Back-end
   back-end:
-    build: https://github.com/li-sense/Back-end.git
+    build: https://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@github.com/li-sense/Back-end.git#develop
 
 
 volumes:
