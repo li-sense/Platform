@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+# Banco de dados
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: li-sense-db!
+    ports:
+      - "15432:5432"
+    volumes:
+    - dbdata:/var/lib/postgresql/data
+    networks:
+    - db-postgres-networks
+     
+  dba:
+# Dba para o postgres
+
+    image: dpage/pgadmin4
+    environment:
+     PGADMIN_DEFAULT_EMAIL: "email@email.com"
+     PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+    - "16543:80"
+    depends_on:
+      - db
+    networks:
+      - db-postgres-networks
+    
+  nginx:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '81:80'
+      - '82:81'
+      - '443:443'
+    volumes:
+      - proxy-data:/data
+      - letsencrypt:/etc/letsencrypt
+
+volumes:
+  dbdata:
+  proxy-data:
+  letsencrypt:
+  
+#Network conectando o db e o dba 
+networks: 
+    db-postgres-networks:
+       driver: bridge
+
+ 
