@@ -13,10 +13,9 @@ services:
     - dbdata:/var/lib/postgresql/data
     networks:
     - db-postgres-networks
-     
-  dba:
-# Dba para o postgres
 
+# Dba para o postgres     
+  dba:
     image: dpage/pgadmin4
     environment:
      PGADMIN_DEFAULT_EMAIL: "email@email.com"
@@ -38,6 +37,16 @@ services:
     volumes:
       - proxy-data:/data
       - letsencrypt:/etc/letsencrypt
+
+  #Front-end
+  front-end:
+    build: https://github.com/li-sense/Front-end.git
+    
+
+  #Back-end
+  back-end:
+    build: https://github.com/li-sense/Back-end.git
+
 
 volumes:
   dbdata:
