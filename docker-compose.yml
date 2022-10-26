@@ -36,7 +36,7 @@ services:
   
   #Back-end
   back-end:
-    build: https://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@github.com/li-sense/Back-end.git#develop
+    build: git@github.com/li-sense/Back-end.git#develop
     ports:
       - "2000:2000"
   
